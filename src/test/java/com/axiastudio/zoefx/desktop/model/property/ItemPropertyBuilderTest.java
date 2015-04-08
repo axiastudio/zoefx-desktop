@@ -27,7 +27,6 @@
 
 package com.axiastudio.zoefx.desktop.model.property;
 
-import com.axiastudio.zoefx.demo.Book;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import org.junit.Test;
@@ -40,10 +39,10 @@ import org.junit.Test;
 public class ItemPropertyBuilderTest {
 
 
-    /*class Book {
+    class Book {
         String title;
         String description;
-    }*/
+    }
 
     @Test
     public void test() throws Exception {
