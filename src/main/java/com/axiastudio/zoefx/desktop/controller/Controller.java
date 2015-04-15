@@ -606,7 +606,7 @@ public class Controller extends BaseController implements DataSetEventListener {
         ReportEngine reportEngine = IOC.queryUtility(ReportEngine.class);
         if( reportEngine!=null ){
             Class classToReport = dataset.getCurrentModel().getEntityClass();
-            if( Reports.getTemplates(classToReport).isPresent() ) {
+            if( Reports.getTemplates(classToReport).size()>0 ) {
                 Stage stage = reportStage(classToReport);
                 stage.show();
             } else {
