@@ -28,6 +28,8 @@
 package com.axiastudio.zoefx.desktop.model;
 
 import com.axiastudio.zoefx.core.beans.EntityBuilder;
+import com.axiastudio.zoefx.desktop.entities.Book;
+import com.axiastudio.zoefx.desktop.entities.Genre;
 import org.junit.Test;
 
 /**
@@ -37,15 +39,6 @@ import org.junit.Test;
  */
 public class EntityBuilderTest {
 
-    class Book {
-        String title;
-        String description;
-        Genre genre;
-    }
-
-    enum Genre {
-        NOVELS, ROMANCE, HISTORIC, REFERENCE
-    }
 
     @Test
     public void test() throws Exception {

@@ -31,6 +31,7 @@ import com.axiastudio.zoefx.core.IOC;
 import com.axiastudio.zoefx.core.beans.EntityBuilder;
 import com.axiastudio.zoefx.core.db.Database;
 import com.axiastudio.zoefx.core.db.Manager;
+import com.axiastudio.zoefx.desktop.entities.Author;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -39,10 +40,6 @@ import java.util.List;
 
 public class NoPersistenceDatabaseImplTest {
 
-    class Author {
-        public String name;
-        public String surname;
-    }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
