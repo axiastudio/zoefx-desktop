@@ -6,7 +6,31 @@
 
     <groupId>com.axiastudio</groupId>
     <artifactId>zoefx-desktop</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2.0</version>
+    <description>ZoeFX is a MVC framework based on JavaFX.</description>
+    <url>http://www.zoefx.com</url>
+
+    <licenses>
+        <license>
+            <name>The BSD 3-Clause License</name>
+            <url>http://opensource.org/licenses/BSD-3-Clause</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Tiziano Lattisi</name>
+            <email>tiziano@axiastudio.it</email>
+            <organization>AXIA Studio</organization>
+            <organizationUrl>http://www.axiastudio.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:axiastudio/zoefx-desktop.git</connection>
+        <developerConnection>scm:git:git@github.com:axiastudio/zoefx-desktop.git</developerConnection>
+        <url>https://github.com/axiastudio/zoefx-desktop</url>
+    </scm>
 
     <build>
         <plugins>
@@ -32,7 +56,14 @@
         <dependency>
             <groupId>com.axiastudio</groupId>
             <artifactId>zoefx-core</artifactId>
-            <version>0.2-SNAPSHOT</version>
+            <version>0.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
