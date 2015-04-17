@@ -50,6 +50,11 @@ public class NoPersistenceDatabaseManagerImpl<E> extends AbstractManager<E> impl
         this.store = new ArrayList<E>();
     }
 
+    @Override
+    public Object getId(E entity) {
+        throw new UnsupportedOperationException("Method getId not supported in NoPersistenceDatabaseManagerImpl.");
+    }
+
     public NoPersistenceDatabaseManagerImpl(List<E> store) {
         this.store = store;
         entityClass = (Class<E>) store.get(0).getClass();
