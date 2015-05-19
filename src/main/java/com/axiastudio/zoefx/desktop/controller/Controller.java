@@ -457,7 +457,7 @@ public class Controller extends BaseController implements DataSetEventListener {
     }
 
     private Stage reportStage(Class classToReport) {
-        URL url = getClass().getResource("/com/axiastudio/zoefx/desktop/view/report/report.fxml");
+        URL url = getClass().getResource("/fxml/report.fxml");
         FXMLLoader loader = new FXMLLoader(url, resourceBundle);
         loader.setLocation(url);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
@@ -483,7 +483,7 @@ public class Controller extends BaseController implements DataSetEventListener {
     }
 
     private Stage searchStage(Class classToSearch, String searchcolumns, Callback callback, String searchcriteria) {
-        URL url = getClass().getResource("/com/axiastudio/zoefx/desktop/view/search/search.fxml");
+        URL url = getClass().getResource("/fxml/search.fxml");
         FXMLLoader loader = new FXMLLoader();
         loader.setResources(resourceBundle);
         loader.setLocation(url);
@@ -628,7 +628,7 @@ public class Controller extends BaseController implements DataSetEventListener {
     public EventHandler<ActionEvent> handlerConsole = new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent e) {
-            URL url = getClass().getResource("/com/axiastudio/zoefx/desktop/console/console.fxml");
+            URL url = getClass().getResource("/fxml/console.fxml");
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(url);
             loader.setBuilderFactory(new JavaFXBuilderFactory());
