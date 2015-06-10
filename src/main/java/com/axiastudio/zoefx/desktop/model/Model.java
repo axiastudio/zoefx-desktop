@@ -32,7 +32,9 @@ import javafx.beans.property.Property;
 import javafx.util.Callback;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * User: tiziano
@@ -54,6 +56,14 @@ public class Model<E> {
             return propertiesCache.get(name);
         }
         return null;
+    }
+
+    public List<ZoeFXProperty> getProperties(){
+        return propertiesCache.keySet().stream().map(k -> propertiesCache.get(k)).collect(Collectors.toList());
+    }
+
+    public List<String> getKeys(){
+        return propertiesCache.keySet().stream().collect(Collectors.toList());
     }
 
     public ZoeFXProperty getProperty(String name, Class<?> klass){

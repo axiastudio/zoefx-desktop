@@ -69,6 +69,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * User: tiziano
@@ -575,9 +576,17 @@ public class Controller extends BaseController implements DataSetEventListener {
         setModel(dataset.newModel());
     };
     public EventHandler<ActionEvent> handlerSearch = e -> {
-        Class classToSearch = dataset.getCurrentModel().getEntityClass();
-        String searchcolumns = behavior.getProperties().getProperty("searchcolumns");
-        String searchcriteria = behavior.getProperties().getProperty("searchcriteria");
+        Model model = dataset.getCurrentModel();
+        Class classToSearch = model.getEntityClass();
+        String searchcolumns=null;
+        String searchcriteria=null;
+        if( behavior != null ){
+            searchcolumns = behavior.getProperties().getProperty("searchcolumns");
+            searchcriteria = behavior.getProperties().getProperty("searchcriteria");
+        }
+        if( searchcolumns == null ){
+            searchcolumns = String.join(",", model.getKeys());
+        }
 
         Callback<List, Boolean> callback = items -> {
             List store = new ArrayList();
