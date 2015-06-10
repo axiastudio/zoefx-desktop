@@ -6,7 +6,7 @@
 
     <groupId>com.axiastudio</groupId>
     <artifactId>zoefx-desktop</artifactId>
-    <version>0.2.1-SNAPSHOT</version>
+    <version>0.2.1</version>
     <name>ZoeFX desktop</name>
     <description>ZoeFX is a MVC framework based on JavaFX.</description>
     <url>http://www.zoefx.com</url>
@@ -70,7 +70,7 @@
     </dependencies>
 
     <properties>
-        <zoefx.version>0.2.1-SNAPSHOT</zoefx.version>
+        <zoefx.version>0.2.1</zoefx.version>
     </properties>
 
 </project>
