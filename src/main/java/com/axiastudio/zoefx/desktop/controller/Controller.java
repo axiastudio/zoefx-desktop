@@ -69,6 +69,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * User: tiziano
@@ -457,7 +458,7 @@ public class Controller extends BaseController implements DataSetEventListener {
     }
 
     private Stage reportStage(Class classToReport) {
-        URL url = getClass().getResource("/com/axiastudio/zoefx/desktop/view/report/report.fxml");
+        URL url = getClass().getResource("/fxml/report.fxml");
         FXMLLoader loader = new FXMLLoader(url, resourceBundle);
         loader.setLocation(url);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
@@ -483,7 +484,7 @@ public class Controller extends BaseController implements DataSetEventListener {
     }
 
     private Stage searchStage(Class classToSearch, String searchcolumns, Callback callback, String searchcriteria) {
-        URL url = getClass().getResource("/com/axiastudio/zoefx/desktop/view/search/search.fxml");
+        URL url = getClass().getResource("/fxml/search.fxml");
         FXMLLoader loader = new FXMLLoader();
         loader.setResources(resourceBundle);
         loader.setLocation(url);
@@ -575,9 +576,17 @@ public class Controller extends BaseController implements DataSetEventListener {
         setModel(dataset.newModel());
     };
     public EventHandler<ActionEvent> handlerSearch = e -> {
-        Class classToSearch = dataset.getCurrentModel().getEntityClass();
-        String searchcolumns = behavior.getProperties().getProperty("searchcolumns");
-        String searchcriteria = behavior.getProperties().getProperty("searchcriteria");
+        Model model = dataset.getCurrentModel();
+        Class classToSearch = model.getEntityClass();
+        String searchcolumns=null;
+        String searchcriteria=null;
+        if( behavior != null ){
+            searchcolumns = behavior.getProperties().getProperty("searchcolumns");
+            searchcriteria = behavior.getProperties().getProperty("searchcriteria");
+        }
+        if( searchcolumns == null ){
+            searchcolumns = String.join(",", model.getKeys());
+        }
 
         Callback<List, Boolean> callback = items -> {
             List store = new ArrayList();
@@ -628,7 +637,7 @@ public class Controller extends BaseController implements DataSetEventListener {
     public EventHandler<ActionEvent> handlerConsole = new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent e) {
-            URL url = getClass().getResource("/com/axiastudio/zoefx/desktop/console/console.fxml");
+            URL url = getClass().getResource("/fxml/console.fxml");
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(url);
             loader.setBuilderFactory(new JavaFXBuilderFactory());

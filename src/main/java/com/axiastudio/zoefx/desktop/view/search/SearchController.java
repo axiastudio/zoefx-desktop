@@ -107,9 +107,13 @@ public class SearchController<T> implements Initializable {
         for( String property: columns ) {
             TableColumn column = new TableColumn();
             column.setText(property);
+            String lookup=null;
+            if( behavior != null ){
+                lookup = behavior.getProperties().getProperty(property + ".lookup");
+            }
             Callback callback = CallbackBuilder.create().beanClass(entityClass)
                     .field(property)
-                    .lookup(behavior.getProperties().getProperty(property+".lookup"))
+                    .lookup(lookup)
                     .build();
             column.setCellValueFactory(callback);
             // custom date order

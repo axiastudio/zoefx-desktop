@@ -85,7 +85,7 @@ public class MsgBoxBuilder {
 
     private MsgBoxResponse showDialog(MsgBoxType type) {
         ResourceBundle bundle = ResourceBundle.getBundle("i18n");
-        URL url = getClass().getResource("/com/axiastudio/zoefx/desktop/view/msgbox/msgbox.fxml");
+        URL url = getClass().getResource("/fxml/msgbox.fxml");
         FXMLLoader loader = new FXMLLoader(url, bundle);
         loader.setResources(bundle);
         loader.setLocation(url);
