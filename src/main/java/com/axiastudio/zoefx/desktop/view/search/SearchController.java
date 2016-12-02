@@ -37,6 +37,7 @@ import com.axiastudio.zoefx.desktop.db.DataSetBuilder;
 import com.axiastudio.zoefx.core.db.Database;
 import com.axiastudio.zoefx.core.db.Manager;
 import com.axiastudio.zoefx.desktop.view.*;
+import com.axiastudio.zoefx.persistence.Operator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -245,17 +246,19 @@ public class SearchController<T> implements Initializable {
                 DatePicker firstDateNode = (DatePicker) criterion.getNodes().get(0);
                 String fieldName = firstDateNode.getId();
                 DatePicker secondDateNode = (DatePicker) criterion.getNodes().get(1);
-                List<Date> value = new ArrayList<>();
                 LocalDate fromLocalDate = firstDateNode.getValue();
+                LocalDate toLocalDate = secondDateNode.getValue();
                 if( fromLocalDate != null ) {
-                    value.add(localDateToDate(fromLocalDate));
-                    LocalDate toLocalDate = secondDateNode.getValue();
-                    if( toLocalDate != null ) {
-                        value.add(localDateToDate(toLocalDate));
-                    } else {
-                        value.add(localDateToDate(fromLocalDate));
-                    }
-                    map.put(fieldName, value);
+                    List<Object> valueFrom = new ArrayList<>();
+                    valueFrom.add(Operator.ge);
+                    valueFrom.add(localDateToDate(fromLocalDate));
+                    map.put(fieldName, valueFrom);
+                }
+                if( toLocalDate != null ) {
+                    List<Object> valueTo = new ArrayList<>();
+                    valueTo.add(Operator.le);
+                    valueTo.add(localDateToDate(toLocalDate));
+                    map.put(fieldName+"#1", valueTo);
                 }
             }
         }
